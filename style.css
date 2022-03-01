@@ -1,0 +1,132 @@
+/*CSS Reset manual*/
+body{
+    /*Reset das margens, espaçamentos e cor do texto*/
+    margin: 0;
+    padding: 0;
+    color: #242424;
+    font-family: sans-serif;
+    /*Previne que o texto exceda a área que compreende 
+    o pai do elemento aumentando indesejávelmente seu tamanho*/
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/*Ajustando as propriedades dos títulos*/
+h1, h2, h3, h4, h5, h6{
+    font-weight: 900;
+    color: #000000;
+}
+
+/*Definições para o invólucro da página*/
+.wrapper{
+    /*Faz com que as margens do invólucro se adaptem a tela
+      quanto que width faz com que o elemento ocupe toda a tela.*/
+    margin: 0 auto;
+    width: 100%
+}
+
+/*Definições para a Tag Main que contem o conteúdo textual da página*/
+main {
+    /*Faz com que o main seja exibido com display block para que ocupe toda a área do elemento pai
+      e define um fundo branco para o elemento*/
+    display: block;
+    background-color: #FFF;
+}
+
+/*Ajustando as definições para os contêineres da página*/
+.container{
+    /*um container centraliza o conteudo textual*/
+    margin: 0 auto;
+    padding: 0 20px;
+    /*Define que ele ocupe todo o elemento pai*/
+    width: 100%;
+    /*Para maximizar a responsividade em dispositrivos com menores telas*/
+    max-width: 760px;
+}
+
+/*ajustando as definições dos modulos da página.
+  Cada modulo é uma unidade section da página: contendo os títulos (h1), ou um conjuto de h2 e paragráfos (p)*/
+section.module p{
+    /*Faz com que cada elemento p tenha um espaçamento entre si*/
+    margin-bottom: 40px;
+}
+
+section.module:last-child{
+    /*A fim de de obter espaços apenas entre os paragráfos,
+      esta regra sobreescre a margin para o ultimo p que estará próximo de um h1*/
+    margin-bottom: 0px;
+}
+
+section.module h2{
+    /*Ajusta as propriedades para os títulos de seção*/
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+
+section.module.content{
+    /*Adiciona espaçamentos no top e bottom do conteúdo textual,
+      e adiciona tambem uma cor de fundo para destacar este elemento.*/
+    padding: 40px 0;
+    background: #ece7d5;
+}
+
+/*Definições das propriedades de parallax da página*/
+section.module.parallax{
+    /*Para uma melhor organização deste elementos dentro do elemento pai*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*Força que o elemento tenha seu tamanho ajustado a proção visível da tela*/
+    height: 100vh !important; /*!important - força este comportamento*/
+    width: 100%;
+    /*Dentro do parallax haverá uma imagem, desta forma estas propriedades pemitem
+      que a mesma seja ajustada corretamento na área do elemento*/
+    position:relative;
+    overflow: hidden;
+    background-position: 50% 50%; /*faz com que o elemento no background seja centralizado*/
+    background-attachment: fixed; /*é o principal responsável pelo efeito da imgem fixa em relação ao conteúdo*/
+    background-repeat: no-repeat;
+    background-size: cover; /*ajusta a imagem da melhor forma possível para que a mesma ocupe todo o container*/
+    /*Para manter a compatibilidade com browsers antigos*/
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+}
+
+/*Definições para a adição de uma sobrepopsição em fade sobre a imagem do parallax*/
+section.module.parallax::after{
+    content: "";
+    /*faz com que o elemento ocupe toda a area do pai*/
+    width: 100%;
+    height: 100%;
+    position: absolute; /*faz com que o elemento se posicione em relação ao pai*/
+    z-index: 8; /*garante que o pseudo elemento estará a frente da imagem na renderização*/
+    /*O gradiente criará o efeito de fade*/
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 40%, #000 100%);
+    /*Para manter a compatibilidade com browsers antigos*/
+    background: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 40%, #000 100%);
+    background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 40%, #000 100%);
+    background: -o-linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 40%, #000 100%);
+}
+
+/*Adiciona as imagens para cada parallax da página*/
+section.module.parallax-1{
+    background-image: url(./img/img1.jpg);
+}
+
+section.module.parallax-2{
+    background-image: url(./img/img2.jpg);
+}
+
+section.module.parallax-3{
+    background-image: url(./img/img3.jpg);
+}
+
+/*Definindo as propriedades para os titulos parallax*/
+section.module.parallax h1{
+    color: #FFF;
+    text-align: center;
+    font-size: 78px;
+    z-index: 50; /*Garante que não haverá sobreposição do título*/
+    text-transform: uppercase;
+}
